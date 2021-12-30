@@ -14,6 +14,7 @@ const Navbar = ({quantity}) => {
             <NavLink to="/" activeClassName={styles.active} exact={true}>Home</NavLink>
             <NavLink to="/products" activeClassName={styles.active}>Products</NavLink>
             <NavLink to="/carts" activeClassName={styles.active}>Cart</NavLink>
+            <NavLink to="/logins" activeClassName={styles.active}>Login</NavLink>
             <div className={styles.cart}>
                 <img className={styles.avarta} src="./images/cart.jpg" />
                 <span>{quantity}</span>

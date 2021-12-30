@@ -1,31 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Login.module.css";
-import { connect } from "react-redux";
+import { useDispatch} from "react-redux";
 
-const Login = ({ user }) => {
+const Login = () => {
+    const [email, SetEmail] = useState('')
+    const [pass, setPass] = useState('')
+    const dispatch= useDispatch();
+    const getEmail = (e) => {
+        SetEmail(e.target.value);
+       
+    }
+
+    const getPassword = (e) => {
+        setPass(e.target.value);
+        console.log(pass)
+    }
+
+    const handleSubmit=(e)=> {
+        e.preventDefault();
+        dispatch({type: 'LOGIN_PAGE', payload: {email, pass}});
+    }
+
     return (
-        <form className={styles.container} action="" method="post">
-            <div className={styles.container}>
-                <label htmlFor="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="username" required />
+        <form action="" onSubmit={(e)=>handleSubmit(e)}>
 
-                <label htmlFor="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" required />
 
-                <button type="submit">Login</button>
-                <label>
-                <input type="checkbox" defaultChecked name="remember" /> Remember me
-                </label>
+            <div className="container login">
+                <label htmlFor="uname"><b>Email</b></label>
+                <input type="text" onChange={(e) => getEmail(e)}  name="email" required/>
+
+                <label htmlFor="psw"><b>Mật khẩu</b></label>
+                <input type="password" onChange={(e) => getPassword(e)}  name="psw" required/>
+                <input type="checkbox"  style={{float: "left"}} /><span style={{float: "left"}} className="saveLogin">Duy trì đăng nhập</span>
+                <button type="submit" >Login</button>
+
             </div>
+  
+
         </form>
     );
 };
 
-export default Login;
 
-// function mapStateToProps(state) {
-//  //   const { todos } = state
-//     return { user: state.user }
-// }
   
-// export default connect(mapStateToProps)(Login)
+export default Login;
