@@ -8,12 +8,10 @@ const Login = () => {
     const dispatch= useDispatch();
     const getEmail = (e) => {
         SetEmail(e.target.value);
-       
     }
 
     const getPassword = (e) => {
         setPass(e.target.value);
-        console.log(pass)
     }
 
     const handleSubmit=(e)=> {
@@ -22,25 +20,19 @@ const Login = () => {
     }
 
     return (
-        <form action="" onSubmit={(e)=>handleSubmit(e)}>
-
-
-            <div className="container login">
+        <form className={styles.container} action="" onSubmit={(e)=>handleSubmit(e)}>
+            <div className={styles.container}>
                 <label htmlFor="uname"><b>Email</b></label>
                 <input type="text" onChange={(e) => getEmail(e)}  name="email" required/>
-
                 <label htmlFor="psw"><b>Mật khẩu</b></label>
                 <input type="password" onChange={(e) => getPassword(e)}  name="psw" required/>
-                <input type="checkbox"  style={{float: "left"}} /><span style={{float: "left"}} className="saveLogin">Duy trì đăng nhập</span>
                 <button type="submit" >Login</button>
-
+                <label>
+                <input type="checkbox" defaultChecked name="remember" /> Remember me
+                </label>
             </div>
-  
-
         </form>
     );
 };
 
-
-  
 export default Login;

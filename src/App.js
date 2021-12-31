@@ -13,7 +13,7 @@ import {
 } from "react-router-dom";
 
 function App({ isLogin }) {
-  if (isLogin === "false") {
+  if (isLogin === false) {
     return (
       <Router>
         <div className="App">
@@ -29,6 +29,9 @@ function App({ isLogin }) {
           <Navbar />
         </div>
         <Switch>
+            <Route path="/logins" exact>
+              <Redirect to="/" />
+            </Route>
             <Route path="/" exact>
               <Home />
             </Route>
@@ -45,6 +48,7 @@ function App({ isLogin }) {
 }
 
 function mapStateToProps(state) {
+
   return { isLogin: state.user.isLogin };
 }
 
