@@ -1,3 +1,5 @@
+import * as types from './shopping-types';
+
 const INIT_STATE = {
     product: [
         {id: 1, name: 'Iphone', price: 1000, qty:1, image: './images/iphone.jpg'},
@@ -20,7 +22,7 @@ function calculator(obj) {
 
 const shopReducer = (state = INIT_STATE, action) => {
     switch (action.type) {
-        case "ADD_PRODUCT":
+        case types.ADD_TO_CART:
             
             if(!state.order.hasOwnProperty(action.payload.item.id)){
                 state.order[action.payload.item.id] = action.payload.item;
@@ -34,8 +36,7 @@ const shopReducer = (state = INIT_STATE, action) => {
                 order:  state.order
             }
           
-
-        case 'REMOVE_ITEM': 
+        case types.REMOVE_ITEM: 
             if (state.order.hasOwnProperty(action.payload.item)) {
                 delete state.order[action.payload.item];
             }
@@ -46,12 +47,9 @@ const shopReducer = (state = INIT_STATE, action) => {
                 order: {...state.order}
             }
         
-        case 'SET_QUANTITY':
-            console.log(action.payload)
+        case types.SET_QUANTITY:
             if (state.order.hasOwnProperty(action.payload.item)) {
-
                 state.order[action.payload.item].qty=action.payload.value
-
             }
 
             return {
