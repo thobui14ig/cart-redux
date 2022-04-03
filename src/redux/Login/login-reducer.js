@@ -1,7 +1,6 @@
 const INIT_STATE = {
     user: [
-        {id: 1, email: 'thanh@gmail.com', password: '123456'},
-        {id: 2, email: 'thang@gmail.com', password: '123456'}
+        {id: 1, email: 'buithanhtho14ig@gmail.com', password: '2021996'},
     ],
     isLogin: false
 }
